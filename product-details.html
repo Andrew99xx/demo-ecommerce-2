@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Karishma Kakoti ::</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="css/custom.css" rel="stylesheet">
+    <script src="js/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Search Modal-->
+    <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable mx-auto">
+            <div class="modal-content" *ngIf="menuType!=='seller'">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Search product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="searchmodalfrm">
+                        <select class="form-control mb-3 shadow-sm">
+                            <option>Search Category</option>
+                            <option>Category-1</option>
+                            <option>Category-2</option>
+                            <option>Category-3</option>
+                            <option>Category-4</option>
+                            <option>Category-5</option>
+                        </select>
+                        <input class="form-control shadow-sm" type="text" placeholder="Search Products">
+                    </div>
+                    <ul class="suggested-search" *ngIf="searchResult">
+                        <li>
+                            <a>{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn w-100" data-bs-dismiss="modal" aria-label="Close">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <section class="hdrbtm py-2">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="col-3 col-lg-2">
+                        <div class="soc d-flex gap-3 align-items-center">
+                            <a href="" class="d-none d-lg-block">
+                                <svg id="XMLID_834_" width="7" height="15" viewBox="0 0 8.797 17.415">
+                                    <path id="XMLID_835_"
+                                        d="M76.984,9.275h1.909v7.859a.281.281,0,0,0,.281.281H82.41a.281.281,0,0,0,.281-.281V9.312h2.194a.281.281,0,0,0,.279-.249L85.5,6.17a.281.281,0,0,0-.279-.313H82.691V4.043c0-.547.294-.824.875-.824h1.653a.281.281,0,0,0,.281-.281V.283A.281.281,0,0,0,85.219,0H82.941c-.016,0-.052,0-.1,0a4.365,4.365,0,0,0-2.854,1.076,2.993,2.993,0,0,0-1,2.66V5.857h-2a.281.281,0,0,0-.281.281V8.994A.281.281,0,0,0,76.984,9.275Z"
+                                        transform="translate(-76.703)" fill="#fff" />
+                                </svg>
+                            </a>
+                            <a href="" class="d-none d-lg-block">
+                                <svg width="15" height="15" viewBox="0 0 19.715 16.051">
+                                    <path id="twitter-svgrepo-com_4_" data-name="twitter-svgrepo-com (4)"
+                                        d="M19.834,8v.52A11.413,11.413,0,0,1,8.351,20a11.413,11.413,0,0,1-6.2-1.81h1a8.092,8.092,0,0,0,5-1.73,4,4,0,0,1-3.781-2.8,4.809,4.809,0,0,0,.77.06,4.663,4.663,0,0,0,1.06-.13A4,4,0,0,1,3,9.671a4.131,4.131,0,0,0,1.82.51A4.061,4.061,0,0,1,3,6.771a4,4,0,0,1,.54-2,11.473,11.473,0,0,0,3.707,3A11.473,11.473,0,0,0,11.852,9a4.7,4.7,0,0,1-.1-.92,4,4,0,0,1,7-2.771,7.932,7.932,0,0,0,2.561-1,4,4,0,0,1-1.78,2.221,7.942,7.942,0,0,0,2.331-.62,8.912,8.912,0,0,1-2,2.091Z"
+                                        transform="translate(-2.15 -3.953)" fill="#fff" />
+                                </svg>
+                            </a>
+                            <a href="" class="d-none d-lg-block">
+                                <svg width="15" height="15" viewBox="0 0 17.448 17.448">
+                                    <g id="instagram-svgrepo-com_1_" data-name="instagram-svgrepo-com (1)"
+                                        transform="translate(1 1)">
+                                        <rect id="Rectangle_213" data-name="Rectangle 213" width="15.448"
+                                            height="15.448" rx="5" transform="translate(0 0)" fill="none" stroke="#fff"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        <path id="Path_102" data-name="Path 102"
+                                            d="M13.606,10.343A2.8,2.8,0,1,1,11.25,7.987,2.8,2.8,0,0,1,13.606,10.343Z"
+                                            transform="translate(-2.84 -3.332)" fill="none" stroke="#fff"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        <line id="Line_30" data-name="Line 30" x2="0.007"
+                                            transform="translate(11.815 3.606)" fill="none" stroke="#fff"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="javascript:void(0);" class="mnutog d-lg-none hdrico">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 17H20M4 12H20M4 7H20" stroke="#ffffff" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                            <a href="" class="hdrico d-lg-none" data-bs-toggle="modal" data-bs-target="#searchmodal">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z"
+                                        fill="#ffffff"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-8">
+                        <div class="d-lg-none text-center">
+                            <a href="" class="logo">
+                                <img src="images/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                        <nav class="nav justify-content-center">
+                            <div class="d-flex">
+                                <div class="mobmnu">
+                                    <div class="p-2 fxdmnuhdr d-block d-lg-none">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <a href="">
+                                                <img src="images/logo.png" alt="Logo">
+                                            </a>
+                                            <div class="mnuclsinr">
+                                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="#fff"
+                                                        stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="primary-menu m-0 p-0 align-items-lg-center">
+                                        <li><a class="active" href="index.html">Home</a></li>
+                                        <li><a  href="projects.html">Projects</a></li>
+                                        <li><a  href="shop.html">Shop</a></li>
+                                        <li class="d-none d-lg-block">
+                                            <a href="" class="logo">
+                                                <img src="images/logo.png" alt="Logo">
+                                            </a>
+                                        </li>
+                                        <li><a  href="courses.html">Courses</a></li>
+                                        <li><a  href="blog.html">Blog</a></li>
+                                        <li><a  href="contact.html">Contact</a></li>
+                                        <li class="d-lg-none mt-auto">
+                                            <div class="hdricoset d-flex align-items-center justify-content-around">
+                                                <a href="" class="hdrico" data-bs-toggle="modal"
+                                                    data-bs-target="#searchmodal">
+                                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                                        <path
+                                                            d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z"
+                                                            fill="#ffffff"></path>
+                                                        <path
+                                                            d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z"
+                                                            fill="#ffffff"></path>
+                                                    </svg>
+                                                </a>
+                                                <a href="cart.html" class="position-relative hdrico">
+                                                    <svg width="17.156" height="18.5" viewBox="0 0 17.156 18.5">
+                                                        <path id="cart-2-svgrepo-com"
+                                                            d="M8,11.01V11m8,.01V11M8,8V7a4,4,0,0,1,8,0V8M8,8H6.84A2,2,0,0,0,4.847,9.834l-.667,8A2,2,0,0,0,6.174,20H17.826a2,2,0,0,0,1.993-2.166l-.667-8A2,2,0,0,0,17.16,8H16M8,8h8"
+                                                            transform="translate(-3.422 -2.25)" fill="none"
+                                                            stroke="#ffffff" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.5"></path>
+                                                    </svg>
+                                                    <span>0</span>
+                                                </a>
+                                                <a href="wishlist.html" class="position-relative hdrico">
+
+                                                    <svg fill="#ffffff" width="17.458" height="15.49"
+                                                        viewBox="0 0 17.458 15.49">
+                                                        <path id="heart-svgrepo-com_14_"
+                                                            data-name="heart-svgrepo-com (14)"
+                                                            d="M12,19.75a.75.75,0,0,1-.53-.22L4.7,12.74a5,5,0,0,1,0-7,4.95,4.95,0,0,1,7,0L12,6l.28-.28a4.95,4.95,0,0,1,7.02-.01,5,5,0,0,1,0,7L12.53,19.5a.75.75,0,0,1-.53.25Zm-3.79-14a3.44,3.44,0,0,0-2.45,1,3.48,3.48,0,0,0,0,4.91L12,17.94l6.23-6.26a3.47,3.47,0,0,0,0-4.91,3.4,3.4,0,0,0-2.44-1,3.44,3.44,0,0,0-2.45,1l-.81.81a.77.77,0,0,1-1.06,0l-.81-.81A3.44,3.44,0,0,0,8.21,5.75Z"
+                                                            transform="translate(-3.271 -4.26)"></path>
+                                                    </svg>
+                                                    <span>0</span>
+                                                </a>
+                                                <div>
+                                                    <div>
+                                                        <a href="register.html" class="hdrico">
+                                                            <svg width="15" height="19.945" viewBox="0 0 17.344 19.945"
+                                                                fill="#ffffff">
+                                                                <g id="account-user-avatar-svgrepo-com"
+                                                                    transform="translate(-4 -1)">
+                                                                    <path id="Path_107" data-name="Path 107"
+                                                                        d="M18.336,9.672a4.336,4.336,0,1,1,4.336-4.336,4.336,4.336,0,0,1-4.336,4.336Zm0-6.938a2.6,2.6,0,1,0,2.6,2.6A2.6,2.6,0,0,0,18.336,2.734Z"
+                                                                        transform="translate(-5.664)"></path>
+                                                                    <path id="Path_108" data-name="Path 108"
+                                                                        d="M20.477,33.406H4.867A.867.867,0,0,1,4,32.539v-2.6A6.938,6.938,0,0,1,10.938,23h3.469a6.938,6.938,0,0,1,6.938,6.938v2.6A.867.867,0,0,1,20.477,33.406ZM5.734,31.672H19.609V29.938a5.2,5.2,0,0,0-5.2-5.2H10.938a5.2,5.2,0,0,0-5.2,5.2Z"
+                                                                        transform="translate(0 -12.461)"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        <a (click)="userLogout()" class="hdrico">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="19.945" viewBox="0 0 17.344 19.945"
+                                                                fill="#ffffff">
+                                                                <g id="account-user-avatar-svgrepo-com"
+                                                                    transform="translate(-4 -1)">
+                                                                    <path id="Path_107" data-name="Path 107"
+                                                                        d="M18.336,9.672a4.336,4.336,0,1,1,4.336-4.336,4.336,4.336,0,0,1-4.336,4.336Zm0-6.938a2.6,2.6,0,1,0,2.6,2.6A2.6,2.6,0,0,0,18.336,2.734Z"
+                                                                        transform="translate(-5.664)"></path>
+                                                                    <path id="Path_108" data-name="Path 108"
+                                                                        d="M20.477,33.406H4.867A.867.867,0,0,1,4,32.539v-2.6A6.938,6.938,0,0,1,10.938,23h3.469a6.938,6.938,0,0,1,6.938,6.938v2.6A.867.867,0,0,1,20.477,33.406ZM5.734,31.672H19.609V29.938a5.2,5.2,0,0,0-5.2-5.2H10.938a5.2,5.2,0,0,0-5.2,5.2Z"
+                                                                        transform="translate(0 -12.461)"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mnucls d-lg-none"></div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-3 col-lg-2">
+                        <div class="hdricoset d-flex align-items-center gap-lg-4 gap-3 justify-content-end">
+                            <a href="" class="hdrico d-none d-lg-block" data-bs-toggle="modal"
+                                data-bs-target="#searchmodal">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z"
+                                        fill="#ffffff"></path>
+                                </svg>
+                            </a>
+                            <a href="cart.html" class="position-relative hdrico">
+                                <svg width="17.156" height="18.5" viewBox="0 0 17.156 18.5">
+                                    <path id="cart-2-svgrepo-com"
+                                        d="M8,11.01V11m8,.01V11M8,8V7a4,4,0,0,1,8,0V8M8,8H6.84A2,2,0,0,0,4.847,9.834l-.667,8A2,2,0,0,0,6.174,20H17.826a2,2,0,0,0,1.993-2.166l-.667-8A2,2,0,0,0,17.16,8H16M8,8h8"
+                                        transform="translate(-3.422 -2.25)" fill="none" stroke="#ffffff"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                                </svg>
+                                <span>0</span>
+                            </a>
+                            <a href="/wishlist.html" class="position-relative hdrico">
+                                <svg fill="#ffffff" width="17.458" height="15.49" viewBox="0 0 17.458 15.49">
+                                    <path id="heart-svgrepo-com_14_" data-name="heart-svgrepo-com (14)"
+                                        d="M12,19.75a.75.75,0,0,1-.53-.22L4.7,12.74a5,5,0,0,1,0-7,4.95,4.95,0,0,1,7,0L12,6l.28-.28a4.95,4.95,0,0,1,7.02-.01,5,5,0,0,1,0,7L12.53,19.5a.75.75,0,0,1-.53.25Zm-3.79-14a3.44,3.44,0,0,0-2.45,1,3.48,3.48,0,0,0,0,4.91L12,17.94l6.23-6.26a3.47,3.47,0,0,0,0-4.91,3.4,3.4,0,0,0-2.44-1,3.44,3.44,0,0,0-2.45,1l-.81.81a.77.77,0,0,1-1.06,0l-.81-.81A3.44,3.44,0,0,0,8.21,5.75Z"
+                                        transform="translate(-3.271 -4.26)"></path>
+                                </svg>
+                                <span>0</span>
+                            </a>
+                            <div class="position-relative">
+                                <div>
+                                    <a href="register.html" class="hdrico">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.945"
+                                            viewBox="0 0 17.344 19.945" fill="#ffffff">
+                                            <g id="account-user-avatar-svgrepo-com" transform="translate(-4 -1)">
+                                                <path id="Path_107" data-name="Path 107"
+                                                    d="M18.336,9.672a4.336,4.336,0,1,1,4.336-4.336,4.336,4.336,0,0,1-4.336,4.336Zm0-6.938a2.6,2.6,0,1,0,2.6,2.6A2.6,2.6,0,0,0,18.336,2.734Z"
+                                                    transform="translate(-5.664)"></path>
+                                                <path id="Path_108" data-name="Path 108"
+                                                    d="M20.477,33.406H4.867A.867.867,0,0,1,4,32.539v-2.6A6.938,6.938,0,0,1,10.938,23h3.469a6.938,6.938,0,0,1,6.938,6.938v2.6A.867.867,0,0,1,20.477,33.406ZM5.734,31.672H19.609V29.938a5.2,5.2,0,0,0-5.2-5.2H10.938a5.2,5.2,0,0,0-5.2,5.2Z"
+                                                    transform="translate(0 -12.461)"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+ 
+    <section class="innerpagebanner text-center text-white" style="background-image: url(images/offerbanner.jpg);">
+        <div class="container">
+            <h1 class="mb-2 text-white fadeUp">Demo Product name</h1>
+            <div class="fadeUp">
+                <ol class="breadcrumb justify-content-center m-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+                    <li class="breadcrumb-item active">Demo Product name</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="row product-details mb-5">
+                <div class="col-md-6 mb-4 mb-md-0 fadeUp">
+                    <div class="productthmbslide">
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper prodlgslide mb-2">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                          </div>
+                          <div thumbsSlider="" class="swiper prodsmlslide">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                              <div class="swiper-slide">
+                                <img src="images/homeslider1-min.jpg" class="w-100" />
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="details">
+                        <div class="reviewsec mb-1 fadeUp">
+                            <small class="d-flex align-items-center gap-1">
+                                <svg version="1.0" id="Layer_1" width="10" height="10" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <path fill="#fed100" d="M63.893,24.277c-0.238-0.711-0.854-1.229-1.595-1.343l-19.674-3.006L33.809,1.15
+                                    C33.479,0.448,32.773,0,31.998,0s-1.48,0.448-1.811,1.15l-8.815,18.778L1.698,22.935c-0.741,0.113-1.356,0.632-1.595,1.343
+                                    c-0.238,0.71-0.059,1.494,0.465,2.031l14.294,14.657L11.484,61.67c-0.124,0.756,0.195,1.517,0.822,1.957
+                                    c0.344,0.243,0.747,0.366,1.151,0.366c0.332,0,0.666-0.084,0.968-0.25l17.572-9.719l17.572,9.719c0.302,0.166,0.636,0.25,0.968,0.25
+                                    c0.404,0,0.808-0.123,1.151-0.366c0.627-0.44,0.946-1.201,0.822-1.957l-3.378-20.704l14.294-14.657
+                                    C63.951,25.771,64.131,24.987,63.893,24.277z"/>
+                                </svg>
+                                <svg version="1.0" id="Layer_1" width="10" height="10" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <path fill="#fed100" d="M63.893,24.277c-0.238-0.711-0.854-1.229-1.595-1.343l-19.674-3.006L33.809,1.15
+                                    C33.479,0.448,32.773,0,31.998,0s-1.48,0.448-1.811,1.15l-8.815,18.778L1.698,22.935c-0.741,0.113-1.356,0.632-1.595,1.343
+                                    c-0.238,0.71-0.059,1.494,0.465,2.031l14.294,14.657L11.484,61.67c-0.124,0.756,0.195,1.517,0.822,1.957
+                                    c0.344,0.243,0.747,0.366,1.151,0.366c0.332,0,0.666-0.084,0.968-0.25l17.572-9.719l17.572,9.719c0.302,0.166,0.636,0.25,0.968,0.25
+                                    c0.404,0,0.808-0.123,1.151-0.366c0.627-0.44,0.946-1.201,0.822-1.957l-3.378-20.704l14.294-14.657
+                                    C63.951,25.771,64.131,24.987,63.893,24.277z"/>
+                                </svg>
+                                <svg version="1.0" id="Layer_1" width="10" height="10" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <path fill="#fed100" d="M63.893,24.277c-0.238-0.711-0.854-1.229-1.595-1.343l-19.674-3.006L33.809,1.15
+                                    C33.479,0.448,32.773,0,31.998,0s-1.48,0.448-1.811,1.15l-8.815,18.778L1.698,22.935c-0.741,0.113-1.356,0.632-1.595,1.343
+                                    c-0.238,0.71-0.059,1.494,0.465,2.031l14.294,14.657L11.484,61.67c-0.124,0.756,0.195,1.517,0.822,1.957
+                                    c0.344,0.243,0.747,0.366,1.151,0.366c0.332,0,0.666-0.084,0.968-0.25l17.572-9.719l17.572,9.719c0.302,0.166,0.636,0.25,0.968,0.25
+                                    c0.404,0,0.808-0.123,1.151-0.366c0.627-0.44,0.946-1.201,0.822-1.957l-3.378-20.704l14.294-14.657
+                                    C63.951,25.771,64.131,24.987,63.893,24.277z"/>
+                                </svg>
+                                <svg version="1.0" id="Layer_1" width="10" height="10" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <path fill="#fed100" d="M63.893,24.277c-0.238-0.711-0.854-1.229-1.595-1.343l-19.674-3.006L33.809,1.15
+                                    C33.479,0.448,32.773,0,31.998,0s-1.48,0.448-1.811,1.15l-8.815,18.778L1.698,22.935c-0.741,0.113-1.356,0.632-1.595,1.343
+                                    c-0.238,0.71-0.059,1.494,0.465,2.031l14.294,14.657L11.484,61.67c-0.124,0.756,0.195,1.517,0.822,1.957
+                                    c0.344,0.243,0.747,0.366,1.151,0.366c0.332,0,0.666-0.084,0.968-0.25l17.572-9.719l17.572,9.719c0.302,0.166,0.636,0.25,0.968,0.25
+                                    c0.404,0,0.808-0.123,1.151-0.366c0.627-0.44,0.946-1.201,0.822-1.957l-3.378-20.704l14.294-14.657
+                                    C63.951,25.771,64.131,24.987,63.893,24.277z"/>
+                                </svg>
+                                <svg version="1.0" id="Layer_1" width="10" height="10" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <path fill="#fed100" d="M63.893,24.277c-0.238-0.711-0.854-1.229-1.595-1.343l-19.674-3.006L33.809,1.15
+                                    C33.479,0.448,32.773,0,31.998,0s-1.48,0.448-1.811,1.15l-8.815,18.778L1.698,22.935c-0.741,0.113-1.356,0.632-1.595,1.343
+                                    c-0.238,0.71-0.059,1.494,0.465,2.031l14.294,14.657L11.484,61.67c-0.124,0.756,0.195,1.517,0.822,1.957
+                                    c0.344,0.243,0.747,0.366,1.151,0.366c0.332,0,0.666-0.084,0.968-0.25l17.572-9.719l17.572,9.719c0.302,0.166,0.636,0.25,0.968,0.25
+                                    c0.404,0,0.808-0.123,1.151-0.366c0.627-0.44,0.946-1.201,0.822-1.957l-3.378-20.704l14.294-14.657
+                                    C63.951,25.771,64.131,24.987,63.893,24.277z"/>
+                                </svg>
+                                (5k+ Reviews)
+                            </small>
+                        </div>
+                        <h2 class="mb-2 fadeUp">Demo product name</h2>
+                        <div class="d-flex align-items-center gap-2 prcsec mb-3 fadeUp">
+                            <del>₹100000</del>
+                            <div class="ragprc">₹100</div>
+                            <span>-20%</span>
+                            <div class="stock">2 in stock</div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <strong class="d-block mb-1">COLOR AVAILABLE</strong>
+                            <div class="row g-2 ps-1">
+                                <div style="background-color:#f00" class="product-color"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <strong class="d-block mb-1">QUANTITY</strong>
+                            <div class="quantity-group d-flex">
+                                <button>-</button>
+                                <input type="text" value="1" />
+                                <button>+</button>
+                            </div>
+                        </div>
+                        <div class="mb-3 detailsbtnset fadeUp">
+                            <div class="row g-3">
+                                <div class="col-lg-4 col-md-6">
+                                    <button class="btn outlinebtn">Buy Now</button>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <a href="cart.html"><button class="btn">Add to Cart</button></a>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <button class="btn outlinebtn">Add Wishlist</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <div class="d-flex align-items-center gap-2 text-bcbcbc">
+                                <svg fill="#bcbcbc" height="26" width="26" version="1.1" id="Layer_1" viewBox="0 0 512.001 512.001" xml:space="preserve">
+                                    <path d="M467.817,274.743h-22.104l-50.14-61.78c-11.693-14.408-29.043-22.672-47.599-22.672h-26.385v-3.41
+                                        c0-21.202-17.248-38.451-38.45-38.451h-41.543c-13.152-38.744-49.878-66.7-93.011-66.7c-54.141,0-98.189,44.047-98.189,98.188
+                                        c0,9.459,1.349,18.609,3.857,27.272H15.694C7.027,207.189,0,214.216,0,222.884s7.027,15.694,15.694,15.694h50.397
+                                        c1.179,0,2.324-0.14,3.428-0.387v8.527H55.461c-8.667,0-15.694,7.027-15.694,15.694c0,8.667,7.027,15.694,15.694,15.694H69.52
+                                        v101.751c0,8.667,7.027,15.694,15.694,15.694h40.853c6.614,20.135,25.58,34.719,47.899,34.719s41.284-14.584,47.899-34.719h84.031
+                                        c4.514,0,8.571-1.917,11.435-4.968h59.847c4.931,22.661,25.136,39.687,49.253,39.687s44.322-17.026,49.253-39.687h20.622
+                                        c8.667,0,15.694-7.027,15.694-15.694v-55.965C512,294.563,492.179,274.743,467.817,274.743z M81.785,179.919
+                                        c0-36.834,29.967-66.799,66.8-66.799s66.8,29.967,66.8,66.799c0,36.834-29.967,66.8-66.8,66.8S81.785,216.753,81.785,179.919z
+                                        M173.965,398.882c-10.491,0-19.025-8.535-19.025-19.025s8.534-19.024,19.025-19.024s19.025,8.534,19.025,19.024
+                                        S184.456,398.882,173.965,398.882z M290.2,364.163h-68.336c-6.615-20.135-25.58-34.718-47.899-34.718
+                                        s-41.284,14.583-47.899,34.718h-25.158v-86.055h47.677c54.141,0,98.189-44.048,98.189-98.189c0-0.033-0.001-0.067-0.001-0.1
+                                        h36.366c3.894,0,7.061,3.168,7.061,7.063V364.163z M321.588,221.681h26.386v-0.001c9.055,0,17.52,4.032,23.227,11.063
+                                        l34.087,42.001h-39.572v-14.186c0-8.667-7.027-15.694-15.694-15.694s-15.694,7.027-15.694,15.694v14.186h-12.74V221.681z
+                                        M426.429,398.882c-10.49,0-19.025-8.535-19.025-19.025s8.534-19.024,19.025-19.024s19.025,8.534,19.025,19.024
+                                        S436.92,398.882,426.429,398.882z M480.612,359.196h-0.001h-8.215c-7.907-17.52-25.529-29.75-45.966-29.75
+                                        s-38.059,12.23-45.966,29.75H321.59v-53.064h116.649c0.003,0,0.006,0,0.009,0c0.004,0,0.008,0,0.013,0h29.558
+                                        c7.054,0,12.794,5.739,12.794,12.793V359.196z"/>
+                                    <path d="M171.827,172.596h-12.728h-3.19v-3.933v-19.351c0-8.667-7.027-15.694-15.694-15.694s-15.694,7.027-15.694,15.694v38.978
+                                        c0,8.667,7.027,15.694,15.694,15.694h31.613c8.667,0,15.694-7.027,15.694-15.694C187.521,179.623,180.494,172.596,171.827,172.596
+                                        z"/>
+                                </svg>
+                                Dispatch within 2 days
+                            </div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <strong class="d-block mb-1">CATEGORY</strong>
+                            <div>Demo category</div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <strong class="d-block mb-1">DESCRIPTION</strong>
+                            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <div class="d-flex align-items-center gap-2">
+                                <strong>SKU:</strong>
+                                <div class="text-bcbcbc">ZR45VHRT</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 fadeUp">
+                            <div class="d-flex align-items-center gap-2">
+                                <strong>SHARE:</strong>
+                                <div class="d-flex align-items-center gap-2">
+                                    <a href="" class="text-bcbcbc">
+                                        <svg width="16" height="16" viewBox="-5 0 20 20" version="1.1">
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g id="Dribbble-Light-Preview" transform="translate(-385.000000, -7399.000000)" fill="#222">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path d="M335.821282,7259 L335.821282,7250 L338.553693,7250 L339,7246 L335.821282,7246 L335.821282,7244.052 C335.821282,7243.022 335.847593,7242 337.286884,7242 L338.744689,7242 L338.744689,7239.14 C338.744689,7239.097 337.492497,7239 336.225687,7239 C333.580004,7239 331.923407,7240.657 331.923407,7243.7 L331.923407,7246 L329,7246 L329,7250 L331.923407,7250 L331.923407,7259 L335.821282,7259 Z" id="facebook-[#176]"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                    <a href="" class="text-bcbcbc">
+                                        <svg width="18" height="18" viewBox="0 -2 20 20" version="1.1">
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g id="Dribbble-Light-Preview" transform="translate(-60.000000, -7521.000000)" fill="#222">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path d="M10.29,7377 C17.837,7377 21.965,7370.84365 21.965,7365.50546 C21.965,7365.33021 21.965,7365.15595 21.953,7364.98267 C22.756,7364.41163 23.449,7363.70276 24,7362.8915 C23.252,7363.21837 22.457,7363.433 21.644,7363.52751 C22.5,7363.02244 23.141,7362.2289 23.448,7361.2926 C22.642,7361.76321 21.761,7362.095 20.842,7362.27321 C19.288,7360.64674 16.689,7360.56798 15.036,7362.09796 C13.971,7363.08447 13.518,7364.55538 13.849,7365.95835 C10.55,7365.79492 7.476,7364.261 5.392,7361.73762 C4.303,7363.58363 4.86,7365.94457 6.663,7367.12996 C6.01,7367.11125 5.371,7366.93797 4.8,7366.62489 L4.8,7366.67608 C4.801,7368.5989 6.178,7370.2549 8.092,7370.63591 C7.488,7370.79836 6.854,7370.82199 6.24,7370.70483 C6.777,7372.35099 8.318,7373.47829 10.073,7373.51078 C8.62,7374.63513 6.825,7375.24554 4.977,7375.24358 C4.651,7375.24259 4.325,7375.22388 4,7375.18549 C5.877,7376.37088 8.06,7377 10.29,7376.99705" id="twitter-[#154]"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                    <a href="" class="text-bcbcbc">
+                                        <svg width="18" height="18" viewBox="0 0 20 20" version="1.1">
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g id="Dribbble-Light-Preview" transform="translate(-220.000000, -7399.000000)" fill="#222">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path d="M173.876,7239 C168.399,7239 164,7243.43481 164,7248.95866 C164,7253.05869 166.407,7256.48916 169.893,7258.07936 C169.893,7256.21186 169.88,7256.45286 171.303,7250.38046 C170.521,7248.80236 171.129,7246.19673 172.88,7246.19673 C175.31,7246.19673 173.659,7249.79964 173.378,7251.2174 C173.129,7252.30544 173.959,7253.14238 174.955,7253.14238 C176.864,7253.14238 178.108,7250.71524 178.108,7247.87063 C178.108,7245.69456 176.615,7244.10437 174.042,7244.10437 C169.467,7244.10437 168.307,7249.19966 169.893,7250.79893 C170.292,7251.40294 169.893,7251.43118 169.893,7252.22174 C169.616,7253.05768 167.403,7251.84259 167.403,7248.70757 C167.403,7245.86195 169.727,7242.51518 174.457,7242.51518 C178.191,7242.51518 180.681,7245.27609 180.681,7248.2054 C180.681,7252.13805 178.523,7254.98366 175.37,7254.98366 C174.291,7254.98366 173.295,7254.3978 172.963,7253.72824 C172.36,7256.07371 172.238,7257.26258 171.303,7258.58153 C172.216,7258.83261 173.129,7259 174.125,7259 C179.602,7259 184,7254.56519 184,7249.04235 C183.752,7243.43481 179.353,7239 173.876,7239" id="pinterest-[#180]"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                    <a href="" class="text-bcbcbc">
+                                        <svg fill="#222" width="23" height="23" viewBox="-5.5 0 32 32" version="1.1">
+                                            <path d="M0 8.219v15.563c0 1.469 1.156 2.625 2.625 2.625h15.563c0.719 0 1.406-0.344 1.844-0.781 0.469-0.469 0.781-1.063 0.781-1.844v-15.563c0-1.469-1.156-2.625-2.625-2.625h-15.563c-0.781 0-1.375 0.313-1.844 0.781-0.438 0.438-0.781 1.125-0.781 1.844zM2.813 10.281c0-1 0.813-1.875 1.813-1.875 1.031 0 1.875 0.875 1.875 1.875 0 1.031-0.844 1.844-1.875 1.844-1 0-1.813-0.813-1.813-1.844zM7.844 23.125v-9.531c0-0.219 0.219-0.406 0.375-0.406h2.656c0.375 0 0.375 0.438 0.375 0.719 0.75-0.75 1.719-0.938 2.719-0.938 2.438 0 4 1.156 4 3.719v6.438c0 0.219-0.188 0.406-0.375 0.406h-2.75c-0.219 0-0.375-0.219-0.375-0.406v-5.813c0-0.969-0.281-1.5-1.375-1.5-1.375 0-1.719 0.906-1.719 2.125v5.188c0 0.219-0.219 0.406-0.438 0.406h-2.719c-0.156 0-0.375-0.219-0.375-0.406zM2.875 23.125v-9.531c0-0.219 0.219-0.406 0.375-0.406h2.719c0.25 0 0.406 0.156 0.406 0.406v9.531c0 0.219-0.188 0.406-0.406 0.406h-2.719c-0.188 0-0.375-0.219-0.375-0.406z"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="" class="text-bcbcbc">
+                                        <svg width="16" height="16" viewBox="0 0 20 20" version="1.1">
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -7599.000000)" fill="#222">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path d="M259.821,7453.12124 C259.58,7453.80344 258.622,7454.36761 257.858,7454.53266 C257.335,7454.64369 256.653,7454.73172 254.355,7453.77943 C251.774,7452.71011 248.19,7448.90097 248.19,7446.36621 C248.19,7445.07582 248.934,7443.57337 250.235,7443.57337 C250.861,7443.57337 250.999,7443.58538 251.205,7444.07952 C251.446,7444.6617 252.034,7446.09613 252.104,7446.24317 C252.393,7446.84635 251.81,7447.19946 251.387,7447.72462 C251.252,7447.88266 251.099,7448.05372 251.27,7448.3478 C251.44,7448.63589 252.028,7449.59418 252.892,7450.36341 C254.008,7451.35771 254.913,7451.6748 255.237,7451.80984 C255.478,7451.90987 255.766,7451.88687 255.942,7451.69881 C256.165,7451.45774 256.442,7451.05762 256.724,7450.6635 C256.923,7450.38141 257.176,7450.3464 257.441,7450.44643 C257.62,7450.50845 259.895,7451.56477 259.991,7451.73382 C260.062,7451.85686 260.062,7452.43903 259.821,7453.12124 M254.002,7439 L253.997,7439 L253.997,7439 C248.484,7439 244,7443.48535 244,7449 C244,7451.18666 244.705,7453.21526 245.904,7454.86076 L244.658,7458.57687 L248.501,7457.3485 C250.082,7458.39482 251.969,7459 254.002,7459 C259.515,7459 264,7454.51465 264,7449 C264,7443.48535 259.515,7439 254.002,7439" id="whatsapp-[#128]"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="destabsec p-4 bg-light fadeUp">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">DESCRIPTION</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">REVIEWS</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">VIDEO</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                        <h3 class="mb-3">Product Description</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                        <h3 class="mb-3">Reviews</h3>
+                        <form action="" class="p-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Web site URL (Optional)</label>
+                                        <input type="url" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Rating</label>
+                                        <select class="form-control">
+                                            <option value="1star">1 star</option>
+                                            <option value="2stars">2 stars</option>
+                                            <option value="3stars">3 stars</option>
+                                            <option value="4stars">4 stars</option>
+                                            <option value="5stars">5 stars</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-form-field class="w-100">
+                                <label class="form-label">Write your feedback</label>
+                                <textarea class="form-control" rows="3" placeholder="Ex. It makes me feel..."></textarea>
+                            </mat-form-field>
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-pink">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                        <h3 class="mb-3">Video</h3>
+                        <iframe class="m-0" width="100%" height="450" src="https://www.youtube.com/embed/WoaAMzG31P4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="title2 mb-4 fadeUp">Recommended Products</h2>
+            <div class="swiper slide4 fadeUp">
+                <div class="swiper-wrapper">
+                    <div class="product-item-list swiper-slide">
+                    <div class="product-item ">
+                        <div class="product-itemimg">
+                        <img src="images/blog2.jpg" alt="">
+                        <div class="mask">
+                            <button class="btnico carticobtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                                <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                                    <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                    <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                    <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                </g>
+                                </svg>
+                            </button>
+                            <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                                <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                                <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                                <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                                </svg>
+                            </button>
+                            <button class="btnico wishicobtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                                <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                                    <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                    <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                        <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                    </g>
+                                    </g>
+                                </g>
+                                </svg>
+                            </button>
+                        </div>
+                        </div>
+                        <div class="product-details p-3">
+                        <a href="#"><h4 class="name-head">Product name</h4></a>
+                        <div class="product-price d-flex gap-2">
+                            <span>₹100</span><del>₹150</del>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="product-item-list swiper-slide">
+                    <div class="product-item ">
+                    <div class="product-itemimg">
+                        <img src="images/blog2.jpg" alt="">
+                        <div class="mask">
+                        <button class="btnico carticobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                                <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                                <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                            <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                                <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                                <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                            </svg>
+                        </button>
+                        <button class="btnico wishicobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                                <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                                <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                    <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                    <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                    </g>
+                                </g>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                    <div class="product-details p-3">
+                        <a href="#"><h4 class="name-head">Product name</h4></a>
+                        <div class="product-price d-flex gap-2">
+                        <span>₹100</span><del>₹150</del>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="product-item-list swiper-slide">
+                    <div class="product-item ">
+                    <div class="product-itemimg">
+                        <img src="images/blog2.jpg" alt="">
+                        <div class="mask">
+                        <button class="btnico carticobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                                <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                                <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                            <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                                <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                                <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                            </svg>
+                        </button>
+                        <button class="btnico wishicobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                                <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                                <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                    <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                    <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                    </g>
+                                </g>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                    <div class="product-details p-3">
+                        <a href="#"><h4 class="name-head">Product name</h4></a>
+                        <div class="product-price d-flex gap-2">
+                        <span>₹100</span><del>₹150</del>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="product-item-list swiper-slide">
+                    <div class="product-item ">
+                    <div class="product-itemimg">
+                        <img src="images/blog2.jpg" alt="">
+                        <div class="mask">
+                        <button class="btnico carticobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                                <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                                <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                            <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                                <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                                <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                            </svg>
+                        </button>
+                        <button class="btnico wishicobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                                <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                                <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                    <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                    <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                    </g>
+                                </g>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                    <div class="product-details p-3">
+                        <a href="#"><h4 class="name-head">Product name</h4></a>
+                        <div class="product-price d-flex gap-2">
+                        <span>₹100</span><del>₹150</del>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="product-item-list swiper-slide">
+                    <div class="product-item ">
+                    <div class="product-itemimg">
+                        <img src="images/blog2.jpg" alt="">
+                        <div class="mask">
+                        <button class="btnico carticobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                                <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                                <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                            <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                                <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                                <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                            </svg>
+                        </button>
+                        <button class="btnico wishicobtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                                <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                                <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                    <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                    <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                    </g>
+                                </g>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                    <div class="product-details p-3">
+                        <a href="#"><h4 class="name-head">Product name</h4></a>
+                        <div class="product-price d-flex gap-2">
+                        <span>₹100</span><del>₹150</del>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <h2 class="title2 mb-4 fadeUp">Recent Viewed</h2>
+          <div class="swiper slide4 fadeUp">
+            <div class="swiper-wrapper">
+                <div class="product-item-list swiper-slide">
+              <div class="product-item">
+                <div class="product-itemimg">
+                  <img src="images/blog1.jpg" alt="">
+                  <div class="mask">
+                    <button class="btnico carticobtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                          <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                            <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                            <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                            <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                          </g>
+                        </svg>
+                    </button>
+                    <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                        <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                          <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                          <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                        </svg>
+                    </button>
+                    <button class="btnico wishicobtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                          <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                            <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                              <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                    </button>
+                </div>
+                </div>
+                <div class="product-details p-3">
+                  <a href="#"><h4 class="name-head">Product name</h4></a>
+                  <div class="product-price d-flex gap-2">
+                    <span>₹100</span><del>₹150</del>
+                  </div>
+                </div>
+              </div>
+                </div>
+                <div class="product-item-list swiper-slide">
+                <div class="product-item">
+                  <div class="product-itemimg">
+                    <img src="images/blog1.jpg" alt="">
+                    <div class="mask">
+                      <button class="btnico carticobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                            <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                              <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                              <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                              <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                            </g>
+                          </svg>
+                      </button>
+                      <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                          <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                            <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                            <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                          </svg>
+                      </button>
+                      <button class="btnico wishicobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                            <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                              <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                  <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                      </button>
+                  </div>
+                  </div>
+                  <div class="product-details p-3">
+                    <a href="#"><h4 class="name-head">Product name</h4></a>
+                    <div class="product-price d-flex gap-2">
+                      <span>₹100</span><del>₹150</del>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="product-item-list swiper-slide">
+                <div class="product-item">
+                  <div class="product-itemimg">
+                    <img src="images/blog1.jpg" alt="">
+                    <div class="mask">
+                      <button class="btnico carticobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                            <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                              <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                              <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                              <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                            </g>
+                          </svg>
+                      </button>
+                      <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                          <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                            <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                            <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                          </svg>
+                      </button>
+                      <button class="btnico wishicobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                            <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                              <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                  <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                      </button>
+                  </div>
+                  </div>
+                  <div class="product-details p-3">
+                    <a href="#"><h4 class="name-head">Product name</h4></a>
+                    <div class="product-price d-flex gap-2">
+                      <span>₹100</span><del>₹150</del>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="product-item-list swiper-slide">
+                <div class="product-item">
+                  <div class="product-itemimg">
+                    <img src="images/blog1.jpg" alt="">
+                    <div class="mask">
+                      <button class="btnico carticobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                            <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                              <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                              <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                              <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                            </g>
+                          </svg>
+                      </button>
+                      <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                          <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                            <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                            <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                          </svg>
+                      </button>
+                      <button class="btnico wishicobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                            <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                              <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                  <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                      </button>
+                  </div>
+                  </div>
+                  <div class="product-details p-3">
+                    <a href="#"><h4 class="name-head">Product name</h4></a>
+                    <div class="product-price d-flex gap-2">
+                      <span>₹100</span><del>₹150</del>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="product-item-list swiper-slide">
+                <div class="product-item">
+                  <div class="product-itemimg">
+                    <img src="images/blog1.jpg" alt="">
+                    <div class="mask">
+                      <button class="btnico carticobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17.816" height="17.384" viewBox="0 0 17.816 17.384">
+                            <g id="cart-svgrepo-com_1_" data-name="cart-svgrepo-com (1)" transform="translate(-1.5 -1.5)">
+                              <path id="Path_1114" data-name="Path 1114" d="M4.4,4.4H18.816l-1.8,7.807H6.2m10.81,2.4H6.8L3.8,2H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                              <circle id="Ellipse_68" data-name="Ellipse 68" cx="1.461" cy="1.461" r="1.461" transform="translate(14.303 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                              <circle id="Ellipse_69" data-name="Ellipse 69" cx="1.461" cy="1.461" r="1.461" transform="translate(6.513 15.463)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></circle>
+                            </g>
+                          </svg>
+                      </button>
+                      <button class="btnico qvicobtn" data-bs-toggle="modal" data-bs-target="#prodtlsmodal">
+                          <svg id="zoom-in-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="16.385" height="16.384" viewBox="0 0 16.385 16.384">
+                            <path id="Path_1115" data-name="Path 1115" d="M16.2,15.3l-4-4a6.906,6.906,0,1,0-.9.9l4,4a.637.637,0,1,0,.9-.9ZM1.274,6.9A5.622,5.622,0,1,1,6.9,12.518,5.628,5.628,0,0,1,1.274,6.9Z" fill="#fff"></path>
+                            <path id="Path_1116" data-name="Path 1116" d="M43.742,39.974H41.249V37.482a.637.637,0,0,0-1.274,0v2.492H37.483a.637.637,0,0,0,0,1.274h2.492v2.493a.637.637,0,0,0,1.274,0V41.248h2.492a.637.637,0,0,0,0-1.274Z" transform="translate(-33.716 -33.716)" fill="#fff"></path>
+                          </svg>
+                      </button>
+                      <button class="btnico wishicobtn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19.245" height="16.965" viewBox="0 0 19.245 16.965">
+                            <g id="heart-svgrepo-com_9_" data-name="heart-svgrepo-com (9)" transform="translate(0 -28.75)">
+                              <g id="Group_9701" data-name="Group 9701" transform="translate(0 28.75)">
+                                <g id="Group_9700" data-name="Group 9700" transform="translate(0 0)">
+                                  <path id="Path_1117" data-name="Path 1117" d="M13.864,28.758a5.364,5.364,0,0,0-3.815,1.582l-.42.42L9.2,30.332A5.387,5.387,0,1,0,1.582,37.95L9.137,45.5l.016.016a.68.68,0,0,0,.956,0l7.555-7.555a5.391,5.391,0,0,0-3.8-9.2ZM16.7,37,9.633,44.073,2.546,36.987A4.024,4.024,0,1,1,8.237,31.3l.908.908a.7.7,0,0,0,.964,0l.9-.9A4.027,4.027,0,1,1,16.7,37Z" transform="translate(0 -28.75)" fill="#fff"></path>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                      </button>
+                  </div>
+                  </div>
+                  <div class="product-details p-3">
+                    <a href="#"><h4 class="name-head">Product name</h4></a>
+                    <div class="product-price d-flex gap-2">
+                      <span>₹100</span><del>₹150</del>
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+    </section>
+    
+    
+
+  
+  
+    <footer class="footer">
+        <div class="container">
+            <div class="ftrtop pt-5 pb-3 text-white">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <a href="" class="logo d-inline-block fadeUp">
+                            <img src="images/logo.png" width="60" alt="">
+                        </a>
+                        <div class="py-3 fadeUp">
+                            Lorem Ipsum isLorem Ipsum is simply dummy text of the printing and the typesetting industry.
+                        </div>
+                        <div class="soc d-flex gap-2 align-items-center fadeUp">
+                            <a href="">
+                                <svg id="XMLID_834_" width="7" height="15" viewBox="0 0 8.797 17.415">
+                                    <path id="XMLID_835_" d="M76.984,9.275h1.909v7.859a.281.281,0,0,0,.281.281H82.41a.281.281,0,0,0,.281-.281V9.312h2.194a.281.281,0,0,0,.279-.249L85.5,6.17a.281.281,0,0,0-.279-.313H82.691V4.043c0-.547.294-.824.875-.824h1.653a.281.281,0,0,0,.281-.281V.283A.281.281,0,0,0,85.219,0H82.941c-.016,0-.052,0-.1,0a4.365,4.365,0,0,0-2.854,1.076,2.993,2.993,0,0,0-1,2.66V5.857h-2a.281.281,0,0,0-.281.281V8.994A.281.281,0,0,0,76.984,9.275Z" transform="translate(-76.703)" fill="#000"/>
+                                </svg>
+                            </a>
+                            <a href="">
+                                <svg width="15" height="15" viewBox="0 0 19.715 16.051">
+                                    <path id="twitter-svgrepo-com_4_" data-name="twitter-svgrepo-com (4)" d="M19.834,8v.52A11.413,11.413,0,0,1,8.351,20a11.413,11.413,0,0,1-6.2-1.81h1a8.092,8.092,0,0,0,5-1.73,4,4,0,0,1-3.781-2.8,4.809,4.809,0,0,0,.77.06,4.663,4.663,0,0,0,1.06-.13A4,4,0,0,1,3,9.671a4.131,4.131,0,0,0,1.82.51A4.061,4.061,0,0,1,3,6.771a4,4,0,0,1,.54-2,11.473,11.473,0,0,0,3.707,3A11.473,11.473,0,0,0,11.852,9a4.7,4.7,0,0,1-.1-.92,4,4,0,0,1,7-2.771,7.932,7.932,0,0,0,2.561-1,4,4,0,0,1-1.78,2.221,7.942,7.942,0,0,0,2.331-.62,8.912,8.912,0,0,1-2,2.091Z" transform="translate(-2.15 -3.953)" fill="#000"/>
+                                </svg>
+                            </a>
+                            <a href="">
+                                <svg width="15" height="15" viewBox="0 0 17.448 17.448">
+                                    <g id="instagram-svgrepo-com_1_" data-name="instagram-svgrepo-com (1)" transform="translate(1 1)">
+                                        <rect id="Rectangle_213" data-name="Rectangle 213" width="15.448" height="15.448" rx="5" transform="translate(0 0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                        <path id="Path_102" data-name="Path 102" d="M13.606,10.343A2.8,2.8,0,1,1,11.25,7.987,2.8,2.8,0,0,1,13.606,10.343Z" transform="translate(-2.84 -3.332)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                        <line id="Line_30" data-name="Line 30" x2="0.007" transform="translate(11.815 3.606)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                    </g>
+                                </svg>                          
+                            </a>
+                            <a href="">
+                                <svg width="16.299" height="14.962" viewBox="0 0 16.299 14.962">
+                                    <g id="linkedin-svgrepo-com_2_" data-name="linkedin-svgrepo-com (2)" transform="translate(0 0)">
+                                        <rect id="Rectangle_214" data-name="Rectangle 214" width="3.176" height="10.164" transform="translate(0.42 4.799)" fill="#000"/>
+                                        <path id="Path_103" data-name="Path 103" d="M-269.059,283.9A1.78,1.78,0,0,0-271,285.663a1.763,1.763,0,0,0,1.9,1.763h.026a1.772,1.772,0,0,0,1.935-1.763A1.773,1.773,0,0,0-269.059,283.9Z" transform="translate(271 -283.9)" fill="#000"/>
+                                        <path id="Path_104" data-name="Path 104" d="M-177.36,357.8a3.249,3.249,0,0,0-3.169,1.693v-1.6h-3.57c.045.846,0,10.164,0,10.164h3.57v-5.492a2.4,2.4,0,0,1,.076-.834,1.816,1.816,0,0,1,1.718-1.247c1.241,0,1.8.942,1.8,2.317v5.257h3.6v-5.651C-173.332,359.264-175.1,357.8-177.36,357.8Z" transform="translate(189.631 -353.097)" fill="#000"/>
+                                    </g>
+                                </svg>                          
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <h3 class="mb-3 fadeUp" data-bs-toggle="collapse" data-bs-target="#collapse-1">Quick Links</h3>
+                        <ul class="ftrmnu collapse show fadeUp" id="collapse-1">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            <li><a href="/courses">Courses</a></li>
+                            <li><a href="/about">About us</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/contact">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <h3 class="mb-3 fadeUp" data-bs-toggle="collapse" data-bs-target="#collapse-2">Information</h3>
+                        <ul class="ftrmnu collapse show fadeUp" id="collapse-2">
+                            <li><a href="checkout">My Account</a></li>
+                            <li><a href="checkout">CheckOut</a></li>
+                            <li><a href="wishlist">Wishlist</a></li>
+                            <li><a href="sitemap">Site Map</a></li>
+                            <li><a href="faqs">Faq's</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <h3 class="mb-3 fadeUp" data-bs-toggle="collapse" data-bs-target="#collapse-3">Subscribe Newsletter</h3>
+                        <ul class="m-0 p-0 collapse show fadeUp" id="collapse-3">
+                            <div class="mb-3">Lorem Ipsum Lorem Ipsum is simply dummy text of the is simply dummy text of the printing and typesetting industry.</div>
+                            <form class="d-block" action="#" method="post">
+                                <div class="input-group subsfrm bg-white p-2">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                    <button class="btn subsbbtn" type="button">Subscribe</button>
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ftrbtm py-3 text-white">
+                <div class="row">
+                    <div class="col-md-7 text-md-start text-center">
+                        <small>© 2023 Karishma Kakoti. All Right Reserved.</small>
+                    </div>
+                    <div class="col-md-5 text-md-end text-center">
+                        <small><a href="privacy-policy">Privacy Policy</a>&nbsp; | &nbsp;<a href="trems-condition">Terms & Conditions</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/fancybox.min.js"></script> -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>

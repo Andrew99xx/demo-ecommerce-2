@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Karishma Kakoti ::</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="css/custom.css" rel="stylesheet">
+    <script src="js/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Search Modal-->
+    <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable mx-auto">
+            <div class="modal-content" *ngIf="menuType!=='seller'">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Search product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="searchmodalfrm">
+                        <select class="form-control mb-3 shadow-sm">
+                            <option>Search Category</option>
+                            <option>Category-1</option>
+                            <option>Category-2</option>
+                            <option>Category-3</option>
+                            <option>Category-4</option>
+                            <option>Category-5</option>
+                        </select>
+                        <input class="form-control shadow-sm" type="text" placeholder="Search Products">
+                    </div>
+                    <ul class="suggested-search" *ngIf="searchResult">
+                        <li>
+                            <a>{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn w-100" data-bs-dismiss="modal" aria-label="Close">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <section class="hdrbtm py-2">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="col-3 col-lg-2">
+                        <div class="soc d-flex gap-3 align-items-center">
+                            <a href="" class="d-none d-lg-block">
+                                <svg id="XMLID_834_" width="7" height="15" viewBox="0 0 8.797 17.415">
+                                    <path id="XMLID_835_"
+                                        d="M76.984,9.275h1.909v7.859a.281.281,0,0,0,.281.281H82.41a.281.281,0,0,0,.281-.281V9.312h2.194a.281.281,0,0,0,.279-.249L85.5,6.17a.281.281,0,0,0-.279-.313H82.691V4.043c0-.547.294-.824.875-.824h1.653a.281.281,0,0,0,.281-.281V.283A.281.281,0,0,0,85.219,0H82.941c-.016,0-.052,0-.1,0a4.365,4.365,0,0,0-2.854,1.076,2.993,2.993,0,0,0-1,2.66V5.857h-2a.281.281,0,0,0-.281.281V8.994A.281.281,0,0,0,76.984,9.275Z"
+                                        transform="translate(-76.703)" fill="#fff" />
+                                </svg>
+                            </a>
+                            <a href="" class="d-none d-lg-block">
+                                <svg width="15" height="15" viewBox="0 0 19.715 16.051">
+                                    <path id="twitter-svgrepo-com_4_" data-name="twitter-svgrepo-com (4)"
+                                        d="M19.834,8v.52A11.413,11.413,0,0,1,8.351,20a11.413,11.413,0,0,1-6.2-1.81h1a8.092,8.092,0,0,0,5-1.73,4,4,0,0,1-3.781-2.8,4.809,4.809,0,0,0,.77.06,4.663,4.663,0,0,0,1.06-.13A4,4,0,0,1,3,9.671a4.131,4.131,0,0,0,1.82.51A4.061,4.061,0,0,1,3,6.771a4,4,0,0,1,.54-2,11.473,11.473,0,0,0,3.707,3A11.473,11.473,0,0,0,11.852,9a4.7,4.7,0,0,1-.1-.92,4,4,0,0,1,7-2.771,7.932,7.932,0,0,0,2.561-1,4,4,0,0,1-1.78,2.221,7.942,7.942,0,0,0,2.331-.62,8.912,8.912,0,0,1-2,2.091Z"
+                                        transform="translate(-2.15 -3.953)" fill="#fff" />
+                                </svg>
+                            </a>
+                            <a href="" class="d-none d-lg-block">
+                                <svg width="15" height="15" viewBox="0 0 17.448 17.448">
+                                    <g id="instagram-svgrepo-com_1_" data-name="instagram-svgrepo-com (1)"
+                                        transform="translate(1 1)">
+                                        <rect id="Rectangle_213" data-name="Rectangle 213" width="15.448"
+                                            height="15.448" rx="5" transform="translate(0 0)" fill="none" stroke="#fff"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        <path id="Path_102" data-name="Path 102"
+                                            d="M13.606,10.343A2.8,2.8,0,1,1,11.25,7.987,2.8,2.8,0,0,1,13.606,10.343Z"
+                                            transform="translate(-2.84 -3.332)" fill="none" stroke="#fff"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        <line id="Line_30" data-name="Line 30" x2="0.007"
+                                            transform="translate(11.815 3.606)" fill="none" stroke="#fff"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="javascript:void(0);" class="mnutog d-lg-none hdrico">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 17H20M4 12H20M4 7H20" stroke="#ffffff" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                            <a href="" class="hdrico d-lg-none" data-bs-toggle="modal" data-bs-target="#searchmodal">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z"
+                                        fill="#ffffff"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-8">
+                        <div class="d-lg-none text-center">
+                            <a href="" class="logo">
+                                <img src="images/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                        <nav class="nav justify-content-center">
+                            <div class="d-flex">
+                                <div class="mobmnu">
+                                    <div class="p-2 fxdmnuhdr d-block d-lg-none">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <a href="">
+                                                <img src="images/logo.png" alt="Logo">
+                                            </a>
+                                            <div class="mnuclsinr">
+                                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="#fff"
+                                                        stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="primary-menu m-0 p-0 align-items-lg-center">
+                                        <li><a class="active" href="index.html">Home</a></li>
+                                        <li><a  href="projects.html">Projects</a></li>
+                                        <li><a  href="shop.html">Shop</a></li>
+                                        <li class="d-none d-lg-block">
+                                            <a href="" class="logo">
+                                                <img src="images/logo.png" alt="Logo">
+                                            </a>
+                                        </li>
+                                        <li><a  href="courses.html">Courses</a></li>
+                                        <li><a  href="blog.html">Blog</a></li>
+                                        <li><a  href="contact.html">Contact</a></li>
+                                        <li class="d-lg-none mt-auto">
+                                            <div class="hdricoset d-flex align-items-center justify-content-around">
+                                                <a href="" class="hdrico" data-bs-toggle="modal"
+                                                    data-bs-target="#searchmodal">
+                                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                                        <path
+                                                            d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z"
+                                                            fill="#ffffff"></path>
+                                                        <path
+                                                            d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z"
+                                                            fill="#ffffff"></path>
+                                                    </svg>
+                                                </a>
+                                                <a href="cart.html" class="position-relative hdrico">
+                                                    <svg width="17.156" height="18.5" viewBox="0 0 17.156 18.5">
+                                                        <path id="cart-2-svgrepo-com"
+                                                            d="M8,11.01V11m8,.01V11M8,8V7a4,4,0,0,1,8,0V8M8,8H6.84A2,2,0,0,0,4.847,9.834l-.667,8A2,2,0,0,0,6.174,20H17.826a2,2,0,0,0,1.993-2.166l-.667-8A2,2,0,0,0,17.16,8H16M8,8h8"
+                                                            transform="translate(-3.422 -2.25)" fill="none"
+                                                            stroke="#ffffff" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.5"></path>
+                                                    </svg>
+                                                    <span>0</span>
+                                                </a>
+                                                <a href="wishlist.html" class="position-relative hdrico">
+
+                                                    <svg fill="#ffffff" width="17.458" height="15.49"
+                                                        viewBox="0 0 17.458 15.49">
+                                                        <path id="heart-svgrepo-com_14_"
+                                                            data-name="heart-svgrepo-com (14)"
+                                                            d="M12,19.75a.75.75,0,0,1-.53-.22L4.7,12.74a5,5,0,0,1,0-7,4.95,4.95,0,0,1,7,0L12,6l.28-.28a4.95,4.95,0,0,1,7.02-.01,5,5,0,0,1,0,7L12.53,19.5a.75.75,0,0,1-.53.25Zm-3.79-14a3.44,3.44,0,0,0-2.45,1,3.48,3.48,0,0,0,0,4.91L12,17.94l6.23-6.26a3.47,3.47,0,0,0,0-4.91,3.4,3.4,0,0,0-2.44-1,3.44,3.44,0,0,0-2.45,1l-.81.81a.77.77,0,0,1-1.06,0l-.81-.81A3.44,3.44,0,0,0,8.21,5.75Z"
+                                                            transform="translate(-3.271 -4.26)"></path>
+                                                    </svg>
+                                                    <span>0</span>
+                                                </a>
+                                                <div>
+                                                    <div>
+                                                        <a href="register.html" class="hdrico">
+                                                            <svg width="15" height="19.945" viewBox="0 0 17.344 19.945"
+                                                                fill="#ffffff">
+                                                                <g id="account-user-avatar-svgrepo-com"
+                                                                    transform="translate(-4 -1)">
+                                                                    <path id="Path_107" data-name="Path 107"
+                                                                        d="M18.336,9.672a4.336,4.336,0,1,1,4.336-4.336,4.336,4.336,0,0,1-4.336,4.336Zm0-6.938a2.6,2.6,0,1,0,2.6,2.6A2.6,2.6,0,0,0,18.336,2.734Z"
+                                                                        transform="translate(-5.664)"></path>
+                                                                    <path id="Path_108" data-name="Path 108"
+                                                                        d="M20.477,33.406H4.867A.867.867,0,0,1,4,32.539v-2.6A6.938,6.938,0,0,1,10.938,23h3.469a6.938,6.938,0,0,1,6.938,6.938v2.6A.867.867,0,0,1,20.477,33.406ZM5.734,31.672H19.609V29.938a5.2,5.2,0,0,0-5.2-5.2H10.938a5.2,5.2,0,0,0-5.2,5.2Z"
+                                                                        transform="translate(0 -12.461)"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        <a (click)="userLogout()" class="hdrico">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="19.945" viewBox="0 0 17.344 19.945"
+                                                                fill="#ffffff">
+                                                                <g id="account-user-avatar-svgrepo-com"
+                                                                    transform="translate(-4 -1)">
+                                                                    <path id="Path_107" data-name="Path 107"
+                                                                        d="M18.336,9.672a4.336,4.336,0,1,1,4.336-4.336,4.336,4.336,0,0,1-4.336,4.336Zm0-6.938a2.6,2.6,0,1,0,2.6,2.6A2.6,2.6,0,0,0,18.336,2.734Z"
+                                                                        transform="translate(-5.664)"></path>
+                                                                    <path id="Path_108" data-name="Path 108"
+                                                                        d="M20.477,33.406H4.867A.867.867,0,0,1,4,32.539v-2.6A6.938,6.938,0,0,1,10.938,23h3.469a6.938,6.938,0,0,1,6.938,6.938v2.6A.867.867,0,0,1,20.477,33.406ZM5.734,31.672H19.609V29.938a5.2,5.2,0,0,0-5.2-5.2H10.938a5.2,5.2,0,0,0-5.2,5.2Z"
+                                                                        transform="translate(0 -12.461)"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mnucls d-lg-none"></div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-3 col-lg-2">
+                        <div class="hdricoset d-flex align-items-center gap-lg-4 gap-3 justify-content-end">
+                            <a href="" class="hdrico d-none d-lg-block" data-bs-toggle="modal"
+                                data-bs-target="#searchmodal">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z"
+                                        fill="#ffffff"></path>
+                                </svg>
+                            </a>
+                            <a href="cart.html" class="position-relative hdrico">
+                                <svg width="17.156" height="18.5" viewBox="0 0 17.156 18.5">
+                                    <path id="cart-2-svgrepo-com"
+                                        d="M8,11.01V11m8,.01V11M8,8V7a4,4,0,0,1,8,0V8M8,8H6.84A2,2,0,0,0,4.847,9.834l-.667,8A2,2,0,0,0,6.174,20H17.826a2,2,0,0,0,1.993-2.166l-.667-8A2,2,0,0,0,17.16,8H16M8,8h8"
+                                        transform="translate(-3.422 -2.25)" fill="none" stroke="#ffffff"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                                </svg>
+                                <span>0</span>
+                            </a>
+                            <a href="/wishlist.html" class="position-relative hdrico">
+                                <svg fill="#ffffff" width="17.458" height="15.49" viewBox="0 0 17.458 15.49">
+                                    <path id="heart-svgrepo-com_14_" data-name="heart-svgrepo-com (14)"
+                                        d="M12,19.75a.75.75,0,0,1-.53-.22L4.7,12.74a5,5,0,0,1,0-7,4.95,4.95,0,0,1,7,0L12,6l.28-.28a4.95,4.95,0,0,1,7.02-.01,5,5,0,0,1,0,7L12.53,19.5a.75.75,0,0,1-.53.25Zm-3.79-14a3.44,3.44,0,0,0-2.45,1,3.48,3.48,0,0,0,0,4.91L12,17.94l6.23-6.26a3.47,3.47,0,0,0,0-4.91,3.4,3.4,0,0,0-2.44-1,3.44,3.44,0,0,0-2.45,1l-.81.81a.77.77,0,0,1-1.06,0l-.81-.81A3.44,3.44,0,0,0,8.21,5.75Z"
+                                        transform="translate(-3.271 -4.26)"></path>
+                                </svg>
+                                <span>0</span>
+                            </a>
+                            <div class="position-relative">
+                                <div>
+                                    <a href="register.html" class="hdrico">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.945"
+                                            viewBox="0 0 17.344 19.945" fill="#ffffff">
+                                            <g id="account-user-avatar-svgrepo-com" transform="translate(-4 -1)">
+                                                <path id="Path_107" data-name="Path 107"
+                                                    d="M18.336,9.672a4.336,4.336,0,1,1,4.336-4.336,4.336,4.336,0,0,1-4.336,4.336Zm0-6.938a2.6,2.6,0,1,0,2.6,2.6A2.6,2.6,0,0,0,18.336,2.734Z"
+                                                    transform="translate(-5.664)"></path>
+                                                <path id="Path_108" data-name="Path 108"
+                                                    d="M20.477,33.406H4.867A.867.867,0,0,1,4,32.539v-2.6A6.938,6.938,0,0,1,10.938,23h3.469a6.938,6.938,0,0,1,6.938,6.938v2.6A.867.867,0,0,1,20.477,33.406ZM5.734,31.672H19.609V29.938a5.2,5.2,0,0,0-5.2-5.2H10.938a5.2,5.2,0,0,0-5.2,5.2Z"
+                                                    transform="translate(0 -12.461)"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <section class="overflow-hidden homeslidersec position-relative">
+        <div class="homesliderImages">
+            <div class="swiper homeslider">
+                <div class="swiper-wrapper">
+                    <div class="slideinner swiper-slide text-center" style="background-image: url(./images/homeslider1-min.jpg);">
+                     
+                    </div>
+                    <div class="slideinner swiper-slide text-center" style="background-image: url(./images/homeslider1-min.jpg);">
+                       
+                    </div>
+                    <div class="slideinner swiper-slide text-center" style="background-image: url(./images/homeslider1-min.jpg);">
+                      
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+            </div>
+      
+        </div>
+        <div class="bnrcap text-center p-4 p-lg-5">
+          <div class="fadeUp">
+            <a routerLink="" class="bnrlogo">
+              <img width="80" src="images/bnrlogo.png" alt="">
+            </a>
+          </div>
+          <h1 class="my-3 text-white fadeUp">Interior Design</h1>
+          <div class="fadeUp">
+            <a href="" class="btnred">VIEW PROJECTS</a>
+          </div>
+        </div> 
+      </section>
+    <section id="scrolldown" class="py-5 abtsec">
+        <div class="container">
+            <div class="row m-0">
+                <div class="col-md-6 p-0 overflow-hidden">
+                    <div class="fadezoomIn in-view"><img src="images/about-min.jpg" alt="" class="w-100"></div>
+                </div>
+                <div class="col-md-6 p-4 text-center text-center" style="background-color: #000000;">
+                    <div class="d-flex h-100 align-items-center justify-content-center">
+                        <div class="text-white">
+                            <div class="fadeUp in-view"><img src="images/abtinta-min.png" alt="" width="120">
+                            </div>
+                            <h3 class="mt-5 mb-2 text-white fadeUp in-view">Karishma
+                                kakoti Interiors</h3>
+                            <h5 class="mb-3 pb-3 text-white fadeUp in-view">Over 20 years
+                                of design innovation</h5>
+                            <div class="fadeUp in-view">
+                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                    typesetting industry. Lorem Ipsum has been the industry's unknown printer
+                                    took a galley of type and scrambled it to make a type specimen book.</p>
+                            </div>
+                            <div class="fadeUp in-view"><a href="about" class="linewhite"
+                                    href="/dev/karisma-kakoti-angular/about">LEAR MORE</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="projcatsec py-5 overflow-hidden" style="background-color: rgba(229, 229, 229, 0.266);">
+        <div class="container">
+          <h2 class="title1 mb-lg-5 mb-4 pb-3 text-center fadeUp">Get Incredible Interior Design</h2>
+          <div class="row mx-0 projcatwrp mobslide">
+            <div class="col-6 p-0 projcatcard mobslideinr">
+              <a routerLink="projects" class="d-block overflow-hidden">
+                <div class="fadezoomIn">
+                  <img src="images/projcat1-min.jpg" alt="" class="w-100">
+                </div>
+                <h3 class="m-0 p-0">Commercial</h3>
+              </a>
+            </div>
+            <div class="col-6 p-0 projcatcard mobslideinr">
+                <a routerLink="projects" class="d-block overflow-hidden">
+                  <div class="fadezoomIn">
+                    <img src="images/projcat2-min.jpg" alt="" class="w-100">
+                  </div>
+                  <h3 class="m-0 p-0">Residential</h3>
+                </a>
+              </div>
+              <div class="col-6 p-0 projcatcard mobslideinr">
+                <a routerLink="projects" class="d-block overflow-hidden">
+                  <div class="fadezoomIn">
+                    <img src="images/projcat3-min.jpg" alt="" class="w-100">
+                  </div>
+                  <h3 class="m-0 p-0">Indoor</h3>
+                </a>
+              </div>
+              <div class="col-6 p-0 projcatcard mobslideinr">
+                <a routerLink="projects" class="d-block overflow-hidden">
+                  <div class="fadezoomIn">
+                    <img src="images/projcat4-min.jpg" alt="" class="w-100">
+                  </div>
+                  <h3 class="m-0 p-0">Work In Progress</h3>
+                </a>
+              </div>
+          </div>
+        </div>
+      </section>
+    <section class="overflow-hidden intersec">
+        <div class="row m-0">
+            <div class="col-md-8 p-0 overflow-hidden">
+                <div class="fadezoomIn"><img src="images/inte-1-min.jpg" alt="" class="w-100"></div>
+            </div>
+            <div class="col-md-4 p-5" style="background-color: #000000;">
+                <div class="h-100 d-flex text-center align-items-center justify-content-center text-white">
+                    <div>
+                        <h3 class="mb-3 text-white fadeUp">Interior Design</h3>
+                        <div class="fadeUp">
+                            <p>Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry. Lorem Ipsum has been the industry's standard dummy text .
+                            </p>
+                        </div>
+                        <div class="fadeUp"><a href="" class="btnwhite">SHOP NOW</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="overflow-hidden intersec">
+        <div class="row m-0 flex-row-reverse">
+            <div class="col-md-8 p-0 overflow-hidden">
+                <div class="fadezoomIn"><img src="images/inte-2-min.jpg" alt="" class="w-100"></div>
+            </div>
+            <div class="col-md-4 p-5" style="background-color: #000000;">
+                <div class="h-100 d-flex text-center align-items-center justify-content-center text-white">
+                    <div>
+                        <h3 class="mb-3 text-white fadezoomIn">Interior Design</h3>
+                        <div class="fadeUp">
+                            <p>Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry. Lorem Ipsum has been the industry's standard dummy text .
+                            </p>
+                        </div>
+                        <div class="fadeUp"><a href="" class="btnwhite">SHOP NOW</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 gallerysec">
+        <div class="container">
+            <h2 class="title1 mb-3 pb-4 text-center fadeUp">Our Latest Projects</h2>
+            <div class="fadeUp">
+              <div class="filter">
+                <a href="#" data-filter="*" class="current">All</a>
+                <a href="#" data-filter=".residential">Residential</a>
+                <a href="#" data-filter=".hotels">Hotels</a>
+                <a href="#" data-filter=".resturantbar">Resturant & Bar</a>
+                <a href="#" data-filter=".retail">Retail</a>
+                <a href="#" data-filter=".partnerships">Partnerships</a>
+                <a href="#" data-filter=".experiences">Experiences</a>
+              </div>
+              <div class="grid">
+                <div class="grid-item residential">
+                  <a class="fancybox" href="images/project-1-min.jpg"  data-fancybox="gallery">
+                    <img src="images/project-1-min.jpg" alt="">
+                  </a>
+                </div>
+                <div class="grid-item residential">
+                    <a class="fancybox" href="images/project-2-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-2-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item residential">
+                    <a class="fancybox" href="images/project-3-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-3-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item hotels">
+                    <a class="fancybox" href="images/project-4-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-4-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item hotels">
+                    <a class="fancybox" href="images/project-5-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-5-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item hotels">
+                    <a class="fancybox" href="images/project-6-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-6-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item drawings">
+                    <a class="fancybox" href="images/project-7-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-7-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item resturantbar">
+                    <a class="fancybox" href="images/project-8-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-8-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item resturantbar">
+                    <a class="fancybox" href="images/project-9-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-9-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item resturantbar">
+                    <a class="fancybox" href="images/project-1-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-1-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item retail">
+                    <a class="fancybox" href="images/project-2-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-2-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item retail">
+                    <a class="fancybox" href="images/project-3-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-3-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item retail">
+                    <a class="fancybox" href="images/project-4-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-4-min.jpg" alt="">
+                      </a>
+                </div>
+                <div class="grid-item partnerships">
+                    <a class="fancybox" href="images/project-5-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-5-min.jpg" alt="">
+                    </a>
+                </div>
+                <div class="grid-item partnerships">
+                    <a class="fancybox" href="images/project-6-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-6-min.jpg" alt="">
+                    </a>
+                </div>
+                <div class="grid-item partnerships">
+                    <a class="fancybox" href="images/project-7-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-7-min.jpg" alt="">
+                    </a>
+                </div>
+                <div class="grid-item experiences">
+                    <a class="fancybox" href="images/project-8-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-8-min.jpg" alt="">
+                    </a>
+                </div>
+                <div class="grid-item experiences">
+                    <a class="fancybox" href="images/project-9-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-9-min.jpg" alt="">
+                    </a>
+                </div>
+                <div class="grid-item experiences">
+                    <a class="fancybox" href="images/project-7-min.jpg"  data-fancybox="gallery">
+                        <img src="images/project-7-min.jpg" alt="">
+                    </a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    <section class="featuredprojectsec overflow-hidden">
+        <div class="row mx-0">
+          <div class="col-md-4 p-0">
+            <div class="overflow-hidden">
+              <img src="images/featured-project1.jpg" alt="" class="w-100 fadezoomIn">
+            </div>
+            <div class="featuredprocap p-3 d-flex w-100 h-100 align-items-center justify-content-center text-center text-white">
+              <div class="p-3 featuredprocapinr d-flex w-100 h-100 align-items-center justify-content-center flex-column">
+                <h5 class="mb-2 fadeUp">Learn Interior Designing With</h5>
+                <h3 class="mb-2 fadeUp">Karishma Kakoti</h3>
+                <div class="fadeUp">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
+                <div class="fadeUp">
+                  <a routerLink="projects" class="btnwhiteline">VIEW PROJECTS</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-0">
+            <div class="overflow-hidden">
+              <img src="images/featured-project2.jpg" alt="" class="w-100 fadezoomIn">
+            </div>
+            <div class="featuredprocap p-3 d-flex w-100 h-100 align-items-center justify-content-center text-center text-white">
+              <div class="p-3 featuredprocapinr d-flex w-100 h-100 align-items-center justify-content-center flex-column">
+                <h5 class="mb-2 fadeUp">Learn Interior Designing With</h5>
+                <h3 class="mb-2 fadeUp">Karishma Kakoti</h3>
+                <div class="fadeUp">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
+                <div class="fadeUp">
+                  <a routerLink="projects" class="btnwhiteline">VIEW PROJECTS</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-0">
+            <div class="overflow-hidden">
+              <img src="images/featured-project3.jpg" alt="" class="w-100 fadezoomIn">
+            </div>
+            <div class="featuredprocap p-3 d-flex w-100 h-100 align-items-center justify-content-center text-center text-white">
+              <div class="p-3 featuredprocapinr d-flex w-100 h-100 align-items-center justify-content-center flex-column">
+                <h5 class="mb-2 fadeUp">Learn Interior Designing With</h5>
+                <h3 class="mb-2 fadeUp">Karishma Kakoti</h3>
+                <div class="fadeUp">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
+                <div class="fadeUp">
+                  <a routerLink="projects" class="btnwhiteline">VIEW PROJECTS</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <section class="testisec py-5 overflow-hidden">
+        <div class="container">
+            <h2 class="title1 mb-4 pb-3 text-md-center fadeUp">People Love Us</h2>
+            <div class="swiper slide3">
+                <div class="swiper-wrapper">
+                <div class="swiper-slide my-3">
+                    <div class="testithmb p-3 rounded bg-white shadow-sm fadeUp">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae eligendi labore quia dolore earum pariatur omnis autem, eaque voluptates, ut error numquam similique aperiam! Porro, quia. Alias, nulla ad.</p>
+                      <div class="d-flex align-items-center my-3">
+                        <div class="d-flex align-items-center">
+                            <div class="testiimg">
+                                <img src="images/testi1.png" alt="" class="w-100">
+                            </div>
+                            <div class="testiconinr ps-3">
+                                <h5 class="m-0">Pritam Adhikary</h5>
+                                <div class="tstisubtit">Customer</div>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                          <svg fill="#ccc" width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide my-3">
+                    <div class="testithmb p-3 rounded bg-white shadow-sm fadeUp">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae eligendi labore quia dolore earum pariatur omnis autem, eaque voluptates, ut error numquam similique aperiam! Porro, quia. Alias, nulla ad.</p>
+                      <div class="d-flex align-items-center my-3">
+                        <div class="d-flex align-items-center">
+                            <div class="testiimg">
+                                <img src="images/testi1.png" alt="" class="w-100">
+                            </div>
+                            <div class="testiconinr ps-3">
+                                <h5 class="m-0">Pritam Adhikary</h5>
+                                <div class="tstisubtit">Customer</div>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                          <svg fill="#ccc" width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide my-3">
+                    <div class="testithmb p-3 rounded bg-white shadow-sm fadeUp">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae eligendi labore quia dolore earum pariatur omnis autem, eaque voluptates, ut error numquam similique aperiam! Porro, quia. Alias, nulla ad.</p>
+                      <div class="d-flex align-items-center my-3">
+                        <div class="d-flex align-items-center">
+                            <div class="testiimg">
+                                <img src="images/testi1.png" alt="" class="w-100">
+                            </div>
+                            <div class="testiconinr ps-3">
+                                <h5 class="m-0">Pritam Adhikary</h5>
+                                <div class="tstisubtit">Customer</div>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                          <svg fill="#ccc" width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide my-3">
+                    <div class="testithmb p-3 rounded bg-white shadow-sm fadeUp">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae eligendi labore quia dolore earum pariatur omnis autem, eaque voluptates, ut error numquam similique aperiam! Porro, quia. Alias, nulla ad.</p>
+                      <div class="d-flex align-items-center my-3">
+                        <div class="d-flex align-items-center">
+                            <div class="testiimg">
+                                <img src="images/testi1.png" alt="" class="w-100">
+                            </div>
+                            <div class="testiconinr ps-3">
+                                <h5 class="m-0">Pritam Adhikary</h5>
+                                <div class="tstisubtit">Customer</div>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                          <svg fill="#ccc" width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="swiper-slide my-3">
+                  <div class="testithmb p-3 rounded bg-white shadow-sm fadeUp">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae eligendi labore quia dolore earum pariatur omnis autem, eaque voluptates, ut error numquam similique aperiam! Porro, quia. Alias, nulla ad.</p>
+                    <div class="d-flex align-items-center my-3">
+                      <div class="d-flex align-items-center">
+                          <div class="testiimg">
+                              <img src="images/testi1.png" alt="" class="w-100">
+                          </div>
+                          <div class="testiconinr ps-3">
+                              <h5 class="m-0">Pritam Adhikary</h5>
+                              <div class="tstisubtit">Customer</div>
+                          </div>
+                      </div>
+                      <div class="ms-auto">
+                        <svg fill="#ccc" width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path d="m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+        </div>
+    </section>
+    
+<section class="py-5 overflow-hidden" style="background-color: #363636;">
+    <div class="container">
+      <div class="d-flex align-items-center mb-4 justify-content-between">
+        <h2 class="title2 m-0 p-0 text-white fadeLeft">What Latest News</h2>
+        <a routerLink="blog" class="btn1 text-white px-0 fadeRight"><span>View All</span>
+          <svg fill="#fff" width="30" height="30" viewBox="0 0 24 24" id="right-circle-2" class="icon line"><path id="primary" d="M12,21a9,9,0,1,1,9-9A9,9,0,0,1,12,21ZM8,12h8M13.5,9.5,16,12l-2.5,2.5" style="fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"></path></svg>
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mobslideinr" >
+          <div class="blogthmb shadow-sm mx-3 fadeUp">
+            <a class="blogthmbimg d-block" href="#">
+              <div class="overflow-hidden"><img src="images/blog1.jpg" alt="" class="w-100"></div>
+              <span>28-03-2023</span>
+            </a>
+            <div class="blogthmbcaption py-3">
+              <a href="#"><h3 class="mb-2 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mobslideinr" >
+            <div class="blogthmb shadow-sm mx-3 fadeUp">
+              <a class="blogthmbimg d-block" href="#">
+                <div class="overflow-hidden"><img src="images/blog1.jpg" alt="" class="w-100"></div>
+                <span>28-03-2023</span>
+              </a>
+              <div class="blogthmbcaption py-3">
+                <a href="#"><h3 class="mb-2 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mobslideinr" >
+            <div class="blogthmb shadow-sm mx-3 fadeUp">
+              <a class="blogthmbimg d-block" href="#">
+                <div class="overflow-hidden"><img src="images/blog1.jpg" alt="" class="w-100"></div>
+                <span>28-03-2023</span>
+              </a>
+              <div class="blogthmbcaption py-3">
+                <a href="#"><h3 class="mb-2 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3></a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+  
+    <footer class="footer">
+        <div class="container">
+            <div class="ftrtop pt-5 pb-3 text-white">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <a href="" class="logo d-inline-block fadeUp">
+                            <img src="images/logo.png" width="60" alt="">
+                        </a>
+                        <div class="py-3 fadeUp">
+                            Lorem Ipsum isLorem Ipsum is simply dummy text of the printing and the typesetting industry.
+                        </div>
+                        <div class="soc d-flex gap-2 align-items-center fadeUp">
+                            <a href="">
+                                <svg id="XMLID_834_" width="7" height="15" viewBox="0 0 8.797 17.415">
+                                    <path id="XMLID_835_" d="M76.984,9.275h1.909v7.859a.281.281,0,0,0,.281.281H82.41a.281.281,0,0,0,.281-.281V9.312h2.194a.281.281,0,0,0,.279-.249L85.5,6.17a.281.281,0,0,0-.279-.313H82.691V4.043c0-.547.294-.824.875-.824h1.653a.281.281,0,0,0,.281-.281V.283A.281.281,0,0,0,85.219,0H82.941c-.016,0-.052,0-.1,0a4.365,4.365,0,0,0-2.854,1.076,2.993,2.993,0,0,0-1,2.66V5.857h-2a.281.281,0,0,0-.281.281V8.994A.281.281,0,0,0,76.984,9.275Z" transform="translate(-76.703)" fill="#000"/>
+                                </svg>
+                            </a>
+                            <a href="">
+                                <svg width="15" height="15" viewBox="0 0 19.715 16.051">
+                                    <path id="twitter-svgrepo-com_4_" data-name="twitter-svgrepo-com (4)" d="M19.834,8v.52A11.413,11.413,0,0,1,8.351,20a11.413,11.413,0,0,1-6.2-1.81h1a8.092,8.092,0,0,0,5-1.73,4,4,0,0,1-3.781-2.8,4.809,4.809,0,0,0,.77.06,4.663,4.663,0,0,0,1.06-.13A4,4,0,0,1,3,9.671a4.131,4.131,0,0,0,1.82.51A4.061,4.061,0,0,1,3,6.771a4,4,0,0,1,.54-2,11.473,11.473,0,0,0,3.707,3A11.473,11.473,0,0,0,11.852,9a4.7,4.7,0,0,1-.1-.92,4,4,0,0,1,7-2.771,7.932,7.932,0,0,0,2.561-1,4,4,0,0,1-1.78,2.221,7.942,7.942,0,0,0,2.331-.62,8.912,8.912,0,0,1-2,2.091Z" transform="translate(-2.15 -3.953)" fill="#000"/>
+                                </svg>
+                            </a>
+                            <a href="">
+                                <svg width="15" height="15" viewBox="0 0 17.448 17.448">
+                                    <g id="instagram-svgrepo-com_1_" data-name="instagram-svgrepo-com (1)" transform="translate(1 1)">
+                                        <rect id="Rectangle_213" data-name="Rectangle 213" width="15.448" height="15.448" rx="5" transform="translate(0 0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                        <path id="Path_102" data-name="Path 102" d="M13.606,10.343A2.8,2.8,0,1,1,11.25,7.987,2.8,2.8,0,0,1,13.606,10.343Z" transform="translate(-2.84 -3.332)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                        <line id="Line_30" data-name="Line 30" x2="0.007" transform="translate(11.815 3.606)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                    </g>
+                                </svg>                          
+                            </a>
+                            <a href="">
+                                <svg width="16.299" height="14.962" viewBox="0 0 16.299 14.962">
+                                    <g id="linkedin-svgrepo-com_2_" data-name="linkedin-svgrepo-com (2)" transform="translate(0 0)">
+                                        <rect id="Rectangle_214" data-name="Rectangle 214" width="3.176" height="10.164" transform="translate(0.42 4.799)" fill="#000"/>
+                                        <path id="Path_103" data-name="Path 103" d="M-269.059,283.9A1.78,1.78,0,0,0-271,285.663a1.763,1.763,0,0,0,1.9,1.763h.026a1.772,1.772,0,0,0,1.935-1.763A1.773,1.773,0,0,0-269.059,283.9Z" transform="translate(271 -283.9)" fill="#000"/>
+                                        <path id="Path_104" data-name="Path 104" d="M-177.36,357.8a3.249,3.249,0,0,0-3.169,1.693v-1.6h-3.57c.045.846,0,10.164,0,10.164h3.57v-5.492a2.4,2.4,0,0,1,.076-.834,1.816,1.816,0,0,1,1.718-1.247c1.241,0,1.8.942,1.8,2.317v5.257h3.6v-5.651C-173.332,359.264-175.1,357.8-177.36,357.8Z" transform="translate(189.631 -353.097)" fill="#000"/>
+                                    </g>
+                                </svg>                          
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <h3 class="mb-3 fadeUp" data-bs-toggle="collapse" data-bs-target="#collapse-1">Quick Links</h3>
+                        <ul class="ftrmnu collapse show fadeUp" id="collapse-1">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            <li><a href="/courses">Courses</a></li>
+                            <li><a href="/about">About us</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/contact">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <h3 class="mb-3 fadeUp" data-bs-toggle="collapse" data-bs-target="#collapse-2">Information</h3>
+                        <ul class="ftrmnu collapse show fadeUp" id="collapse-2">
+                            <li><a href="checkout">My Account</a></li>
+                            <li><a href="checkout">CheckOut</a></li>
+                            <li><a href="wishlist">Wishlist</a></li>
+                            <li><a href="sitemap">Site Map</a></li>
+                            <li><a href="faqs">Faq's</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <h3 class="mb-3 fadeUp" data-bs-toggle="collapse" data-bs-target="#collapse-3">Subscribe Newsletter</h3>
+                        <ul class="m-0 p-0 collapse show fadeUp" id="collapse-3">
+                            <div class="mb-3">Lorem Ipsum Lorem Ipsum is simply dummy text of the is simply dummy text of the printing and typesetting industry.</div>
+                            <form class="d-block" action="#" method="post">
+                                <div class="input-group subsfrm bg-white p-2">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                    <button class="btn subsbbtn" type="button">Subscribe</button>
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ftrbtm py-3 text-white">
+                <div class="row">
+                    <div class="col-md-7 text-md-start text-center">
+                        <small>© 2023 Karishma Kakoti. All Right Reserved.</small>
+                    </div>
+                    <div class="col-md-5 text-md-end text-center">
+                        <small><a href="privacy-policy">Privacy Policy</a>&nbsp; | &nbsp;<a href="trems-condition">Terms & Conditions</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/fancybox.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
